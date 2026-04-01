@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login da Administração - Biblioteca</title>
+    <!-- Reaproveitamos o mesmo arquivo de design! -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <main class="container">
+        <h1>Área da Administração</h1>
+        <p>Acesso exclusivo para gestão de agendamentos da biblioteca.</p>
+
+        <form id="formLogin">
+            
+            <div class="campo">
+                <label for="emailAdmin">E-mail Institucional:</label>
+                <!-- Usamos a mesma trava de e-mail da etec -->
+                <input type="email" id="emailAdmin" name="emailAdmin" required pattern=".+@etec\.sp\.gov\.br" placeholder="bibliotecario@etec.sp.gov.br">
+            </div>
+
+            <div class="campo">
+                <label for="senhaAdmin">Senha de Acesso:</label>
+                <input type="password" id="senhaAdmin" name="senhaAdmin" required placeholder="Digite sua senha">
+            </div>
+
+            <!-- Este botão vai levar para a tela do painel depois -->
+            <button type="submit">Entrar no Painel</button>
+        </form>
+
+        <!-- Botão para o administrador voltar caso tenha clicado sem querer -->
+        <div class="link-admin">
+            <a href="index.html">← Voltar para Agendamento de Alunos</a>
+        </div>
+    </main>
+
+</body>
+</html>

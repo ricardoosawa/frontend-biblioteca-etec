@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agendamento de Serviços - Biblioteca</title>
+    <!-- Conexão com o seu arquivo de design -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <main class="container">
+        <h1>Agendamento - Serviço de Referência</h1>
+        <p>Preencha os dados abaixo para reservar seu horário na biblioteca da Etec.</p>
+
+        <form id="formAgendamento">
+
+            <div class="campo" id="bloco-rm">
+                 <label for="rm">RM do Aluno (5 dígitos):</label>
+                 <input 
+                    type="text" 
+                    id="rm" 
+                    name="rm" 
+                    required 
+                    inputmode="numeric" 
+                    pattern="[0-9]{5}" 
+                    maxlength="5" 
+                    placeholder="Ex: 12345">
+                <span class="mensagem-erro">Verifique o RM. Ele deve ter exatamente 5 números.</span>
+            </div>
+
+            <div class="campo">
+                <label for="name">Nome Completo:</label>
+                <input type="text" id="nome" name="nome" required placeholder="Seu nome completo">
+            </div>
+
+            <div class="campo" id="bloco-email">
+                <label for="email">E-mail Institucional:</label>
+                <input 
+                    type="email" 
+                    id="email" 
+                    name="email" 
+                    required 
+                    pattern=".+@etec\.sp\.gov\.br" 
+                    placeholder="rm@etec.sp.gov.br">
+                <span class="mensagem-erro">O e-mail deve ser o institucional terminando em @etec.sp.gov.br</span>
+            </div>
+            
+            <div class="campo">
+                <label for="curso">Curso Técnico:</label>
+                <input type="text" id="curso" name="curso" required placeholder="Ex: Técnico em Informática">
+            </div>
+
+            <div class="campo-servicos">
+                <p>Serviço Desejado (Selecione um ou ambos):</p>
+                <label>
+                    <input type="checkbox" name="servico" value="Levantamento Bibliográfico">
+                    Levantamento Bibliográfico
+                </label>
+                <br>
+                <label>
+                    <input type="checkbox" name="servico" value="Normalização ABNT">
+                    Normalização ABNT
+                </label>
+            </div>
+
+            <div class="campo">
+                <label for="data">Data do Atendimento:</label>
+                <input type="date" id="data" name="data" min="2026-04-01" required>
+            </div>
+
+            <div class="campo">
+                <label for="horario">Horário do Atendimento:</label>
+                <select id="horario" name="horario" required>
+                    <option value="" disabled selected>Escolha um horário...</option>
+                    <option value="08:00">08:00</option>
+                    <option value="08:30">08:30</option>
+                    <option value="09:00">09:00</option>
+                    <option value="09:30">09:30</option>
+                    <option value="10:00">10:00</option>
+                    <option value="10:30">10:30</option>
+                    <option value="11:00">11:00</option>
+                    <option value="11:30">11:30</option>
+                    <option value="12:00">12:00</option>
+                    <option value="12:30">12:30</option>
+                    <option value="13:00">13:00</option>
+                    <option value="13:30">13:30</option>
+                    <option value="14:00">14:00</option>
+                    <option value="14:30">14:30</option>
+                    <option value="15:00">15:00</option>
+                    <option value="15:30">15:30</option>
+                    <option value="16:00">16:00</option>
+                </select>
+            </div>
+
+            <button type="submit">Solicitar Agendamento</button>
+        </form>
+            <div class="link-admin">
+                <a href="login.html">🔒 Acesso Restrito - Bibliotecário</a>
+            </div>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+

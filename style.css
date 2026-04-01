@@ -1,0 +1,285 @@
+/* Reseta os espaçamentos padrão do navegador e define a fonte */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Fundo da página e centralização do formulário */
+body {
+    background-color: #f4f4f9;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* O "cartão" branco onde o formulário fica dentro */
+.container {
+    background-color: #ffffff;
+    padding: 30px 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+    /* Linha vermelha no topo para dar a identidade da Etec */
+    border-top: 6px solid #b30000; 
+}
+
+h1 {
+    color: #b30000;
+    font-size: 24px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+p {
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 14px;
+    color: #666;
+}
+
+/* Espaçamento entre as perguntas */
+.campo, .campo-servicos {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+/* 
+   AQUI ESTÁ A ALTERAÇÃO PRINCIPAL: 
+   Adicionamos a tag 'select' na lista abaixo para que o dropdown 
+   de horários fique com o mesmo design das outras caixas. 
+   Também removemos o input[type="time"] que não usamos mais.
+*/
+input[type="text"],
+input[type="number"],
+input[type="email"],
+input[type="date"],
+select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: border-color 0.3s;
+    background-color: #ffffff;
+}
+
+/* Efeito vermelho ao clicar dentro da caixa de texto ou da lista suspensa */
+input:focus, 
+select:focus {
+    border-color: #b30000;
+    outline: none;
+}
+
+/* Organizando os checkboxes dos serviços */
+.campo-servicos label {
+    font-weight: normal;
+    display: inline-block;
+    margin-right: 20px;
+    margin-top: 5px;
+    cursor: pointer;
+}
+
+/* Estilo do botão de agendar */
+button {
+    width: 100%;
+    padding: 14px;
+    background-color: #b30000;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 10px;
+}
+
+/* Efeito quando o mouse passa por cima do botão */
+button:hover {
+    background-color: #8a0000;
+}
+/* Estilo do link de Acesso Restrito e Voltar */
+.link-admin {
+    text-align: center;
+    margin-top: 25px;
+    border-top: 1px solid #eee;
+    padding-top: 15px;
+}
+
+.link-admin a {
+    color: #888;
+    text-decoration: none;
+    font-size: 13px;
+    transition: color 0.3s;
+}
+
+.link-admin a:hover {
+    color: #b30000;
+    text-decoration: underline;
+}
+/* =========================================
+   ESTILOS EXCLUSIVOS DO PAINEL (Tabela)
+========================================= */
+
+/* Deixa o painel mais largo que o formulário normal */
+.container-painel {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 1000px;
+    border-top: 6px solid #b30000;
+}
+
+/* Organiza o título e o botão de sair lado a lado */
+.cabecalho-painel {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #f4f4f9;
+    padding-bottom: 15px;
+}
+
+.cabecalho-painel h1 {
+    text-align: left;
+    margin-bottom: 5px;
+}
+
+.cabecalho-painel p {
+    text-align: left;
+    margin-bottom: 0;
+}
+
+.btn-sair {
+    background-color: #666;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.btn-sair:hover {
+    background-color: #333;
+}
+
+/* Estilização da Tabela de Agendamentos */
+.tabela-responsiva {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+th, td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    font-size: 14px;
+}
+
+th {
+    background-color: #f8f9fa;
+    color: #333;
+    font-weight: bold;
+}
+
+/* Cores de Status (Etiquetas) */
+.status-pendente {
+    background-color: #ffc107;
+    color: #856404;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.status-aprovado {
+    background-color: #28a745;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* Botões de Ação (Aprovar / Recusar) na Tabela */
+.acoes {
+    display: flex;
+    gap: 8px;
+}
+
+.btn-aprovar, .btn-recusar {
+    width: 35px;
+    height: 35px;
+    padding: 0;
+    margin-top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+}
+
+.btn-aprovar {
+    background-color: #28a745; /* Verde */
+}
+
+.btn-aprovar:hover {
+    background-color: #218838;
+}
+
+.btn-recusar {
+    background-color: #dc3545; /* Vermelho */
+}
+
+.btn-recusar:hover {
+    background-color: #c82333;
+}
+
+/* Botão desativado (quando já foi aprovado) */
+button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+/* =========================================
+   ESTILOS DE VALIDAÇÃO (ERROS)
+========================================= */
+
+/* Esconde a mensagem por padrão e define a cor vermelha */
+.mensagem-erro {
+    display: none;
+    color: #dc3545;
+    font-size: 12px;
+    margin-top: 5px;
+    font-weight: 500;
+}
+
+/* Quando o JS adicionar a classe 'com-erro' na div, a mensagem aparece */
+.campo.com-erro .mensagem-erro {
+    display: block;
+}
+
+/* Deixa a borda do input vermelha e o fundo levemente rosado para chamar atenção */
+.campo.com-erro input {
+    border-color: #dc3545;
+    background-color: #fff8f8;
+}

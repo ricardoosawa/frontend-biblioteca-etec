@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel de Gestão - Biblioteca</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="fundo-painel">
+
+    <!-- Note que usamos uma classe nova (container-painel) para deixá-lo mais largo -->
+    <main class="container-painel">
+        <header class="cabecalho-painel">
+            <div>
+                <h1>Gestão de Agendamentos</h1>
+                <p>Biblioteca - Etec prof. Luiz Pires Barbosa</p>
+            </div>
+            <a href="index.html" class="btn-sair">Sair do Painel</a>
+        </header>
+
+        <section class="tabela-responsiva">
+            <table>
+                <thead>
+                    <tr>
+                        <th>RM</th>
+                        <th>Nome</th> <th>E-mail</th>
+                        <th>Serviço</th>
+                        <th>Data</th>
+                        <th>Horário</th>
+                        <th>Status</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Exemplo de Aluno 1 (Fictício para teste visual) -->
+                    <tr>
+                        <td>12345</td>
+                        <td>Joao Silva</td><td>joao@etec.sp.gov.br</td>
+                        <td>Normalização ABNT</td>
+                        <td>10/04/2026</td>
+                        <td>14:00</td>
+                        <td><span class="status-pendente">Pendente</span></td>
+                        <td class="acoes">
+                            <button class="btn-aprovar">✓</button>
+                            <button class="btn-recusar">✕</button>
+                        </td>
+                    </tr>
+                    
+                    <!-- Exemplo de Aluno 2 (Fictício para teste visual) -->
+                    <tr>
+                        <td>54321</td>
+                        <td>Maria Oliveira</td><td>maria@etec.sp.gov.br</td>
+                        <td>Levantamento Bibliográfico</td>
+                        <td>10/04/2026</td>
+                        <td>15:30</td>
+                        <td><span class="status-aprovado">Aprovado</span></td>
+                        <td class="acoes">
+                            <button class="btn-aprovar" disabled>✓</button>
+                            <button class="btn-recusar">✕</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+</body>
+</html>
