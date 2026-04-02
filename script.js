@@ -71,9 +71,9 @@ document.addEventListener('DOMContentLoaded', () => {
             };
 
             // Envia para o servidor Node.js
+            // Atualize apenas o endereço URL nesta linha:
             try {
-                // A porta 3000 é onde o Back-end dos seus colegas estará rodando
-                const resposta = await fetch('http://localhost:3000/agendar', {
+                const resposta = await fetch('http://localhost:3000/api/v1/agendar', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(dadosDoAluno)
