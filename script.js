@@ -59,31 +59,41 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
-            // Monta o pacote JSON para o Back-end
+            // --- A TRADUÇÃO PARA O BACK-END ---
+            // Verifica no texto selecionado se as palavras-chave existem
+            const pediuLevantamento = servicosSelecionados.toLowerCase().includes('levantamento');
+            const pediuNormalizacao = servicosSelecionados.toLowerCase().includes('normaliza');
+
+            // Monta o pacote JSON dividindo o serviço nas gavetas que o Zod exige
             const dadosDoAluno = {
                 rm: inputRm.value,
                 nome: document.getElementById('nome').value,
                 email: inputEmail.value,
                 curso: document.getElementById('curso').value,
-                servico: servicosSelecionados,
+                servico_levantamento: pediuLevantamento,
+                servico_normalizacao: pediuNormalizacao,
                 data: document.getElementById('data').value,
                 horario: document.getElementById('horario').value
             };
 
             // Envia para o servidor Node.js
-            // Atualize apenas o endereço URL nesta linha:
             try {
-                const resposta = await fetch('http://localhost:3000/api/v1/agendar', {
+                const resposta = await fetch('http://localhost:3000/api/v1/agendamentos', {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
                     body: JSON.stringify(dadosDoAluno)
                 });
 
                 if (resposta.ok) {
-                    // Sucesso! Vai para a tela que criamos
+                    // Sucesso! Vai para a tela de confirmação
                     window.location.href = 'confirmacao.html';
                 } else {
-                    alert('Erro ao agendar. Verifique os dados com a administração.');
+                    // O nosso X9 da tela do aluno em ação!
+                    const motivo = await resposta.text();
+                    alert('O servidor recusou o agendamento! Motivo: ' + motivo);
+                    console.log("Erro detalhado no agendamento:", motivo);
                 }
             } catch (erro) {
                 console.error('Erro de conexão:', erro);

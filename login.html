@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login da Administração - Biblioteca</title>
-    <!-- Reaproveitamos o mesmo arquivo de design! -->
+    <title>Administração - Biblioteca Etec</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -13,28 +12,50 @@
         <h1>Área da Administração</h1>
         <p>Acesso exclusivo para gestão de agendamentos da biblioteca.</p>
 
-        <form id="formLogin">
-            
-            <div class="campo">
-                <label for="emailAdmin">E-mail Institucional:</label>
-                <!-- Usamos a mesma trava de e-mail da etec -->
-                <input type="email" id="emailAdmin" name="emailAdmin" required pattern=".+@etec\.sp\.gov\.br" placeholder="bibliotecario@etec.sp.gov.br">
-            </div>
+        <div id="loadingStatus" style="text-align: center; margin: 20px 0;">
+            <p>Verificando sistema...</p>
+        </div>
 
+        <form id="formLogin" style="display: none;">
+            <h3>Fazer Login</h3>
             <div class="campo">
-                <label for="senhaAdmin">Senha de Acesso:</label>
-                <input type="password" id="senhaAdmin" name="senhaAdmin" required placeholder="Digite sua senha">
+                <label for="emailLogin">E-mail Institucional:</label>
+                <input type="email" id="emailLogin" required placeholder="bibliotecario@etec.sp.gov.br">
             </div>
-
-            <!-- Este botão vai levar para a tela do painel depois -->
+            <div class="campo">
+                <label for="senhaLogin">Senha de Acesso:</label>
+                <input type="password" id="senhaLogin" required placeholder="Digite sua senha">
+            </div>
             <button type="submit">Entrar no Painel</button>
         </form>
 
-        <!-- Botão para o administrador voltar caso tenha clicado sem querer -->
+        <form id="formRegistro" style="display: none;">
+            <h3>Criar Usuário Administrador (1º Acesso)</h3>
+            <div class="campo">
+                <label for="nomeRegistro">Nome:</label>
+                <input type="text" id="nomeRegistro" required placeholder="Seu nome">
+            </div>
+            <div class="campo">
+                <label for="emailRegistro">E-mail Institucional:</label>
+                <input type="email" id="emailRegistro" required placeholder="bibliotecario@etec.sp.gov.br">
+            </div>
+            <div class="campo">
+                <label for="senhaRegistro">Crie uma Senha:</label>
+                <input type="password" id="senhaRegistro" required placeholder="Crie uma senha forte">
+            </div>
+            <div class="campo">
+                <label for="senhaRegistroConfirm">Confirme a Senha:</label>
+                <input type="password" id="senhaRegistroConfirm" required placeholder="Repita a senha">
+            </div>
+            <button type="submit" style="background-color: #0056b3;">Registrar e Entrar</button>
+        </form>
+
         <div class="link-admin">
             <a href="index.html">← Voltar para Agendamento de Alunos</a>
         </div>
     </main>
+
+    <script src="auth.js"></script>
 
 </body>
 </html>
