@@ -139,9 +139,34 @@ button:hover {
     padding: 30px;
     border-radius: 8px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 1000px;
+    width: 95%; /* Ocupa 95% da tela... */
+    max-width: 1400px; /* ...mas para de crescer em 1400px (tamanho excelente para painéis) */
     border-top: 6px solid #b30000;
+    margin: 40px auto; /* O 'auto' garante que o painel fique centralizado no meio da tela */
+}
+
+/* ==========================================
+   Ajustes Finos para a Tabela Larga
+   ========================================== */
+
+.tabela-responsiva {
+    width: 100%;
+    overflow-x: auto; /* Se alguém abrir num notebook pequeno, cria uma barrinha de rolar e não quebra o layout */
+    margin-top: 20px;
+}
+
+.tabela-responsiva table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px; /* Uma fonte levemente menor (14px ou 15px) ajuda os textos longos a caberem melhor */
+    white-space: nowrap; /* Evita que a data e horário quebrem no meio */
+}
+
+/* Opcional: Permite que apenas o e-mail e serviço quebrem linha se necessário */
+.tabela-responsiva td:nth-child(3), 
+.tabela-responsiva td:nth-child(4), 
+.tabela-responsiva td:nth-child(5) {
+    white-space: normal;
 }
 
 /* Organiza o título e o botão de sair lado a lado */
@@ -282,4 +307,107 @@ button:disabled {
 .campo.com-erro input {
     border-color: #dc3545;
     background-color: #fff8f8;
+}
+
+/* Estilo do cabeçalho */
+.topo-painel {
+    display: flex;
+    justify-content: space-between; /* Título na esquerda, botões na direita */
+    align-items: center;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-bottom: 2px solid #e9ecef;
+    margin-bottom: 30px;
+}
+
+.controles-topo {
+    display: flex;
+    gap: 15px; /* Espaço entre os botões */
+}
+
+/* Botão de Perfil */
+.btn-secundario {
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.btn-secundario:hover {
+    background-color: #5a6268;
+}
+
+/* Botão Sair (vermelho para destacar) */
+.btn-sair {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn-sair:hover {
+    background-color: #c82333;
+}
+/* ==========================================
+   Estilos do Rodapé
+   ========================================== */
+
+.rodape-biblioteca {
+    text-align: center;
+    padding: 20px;
+    margin-top: 50px;
+    font-size: 14px;
+    color: #6c757d; /* Um cinza discreto para não roubar a atenção da página */
+    border-top: 1px solid #e9ecef; /* Uma linha sutil separando do conteúdo */
+}
+
+.rodape-biblioteca a {
+    color: #b30000; /* A cor padrão da Etec que estamos usando no projeto */
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.rodape-biblioteca a:hover {
+    color: #800000; /* Fica um pouco mais escuro quando passa o mouse */
+    text-decoration: underline;
+}
+/* Garante que o corpo da página inicial seja uma coluna de cima para baixo */
+body {
+    display: flex;
+    flex-direction: column; /* Transforma a tela em uma pilha vertical */
+    min-height: 100vh; /* Garante que a página tenha no mínimo o tamanho total da tela */
+}
+
+/* ==========================================
+   Estilos do Rodapé (A versão corrigida!)
+   ========================================== */
+
+.rodape-biblioteca {
+    text-align: center;
+    padding: 20px;
+    font-size: 14px;
+    color: #6c757d; 
+    border-top: 1px solid #e9ecef; 
+    width: 100%; /* Ocupa a largura toda da tela */
+    margin-top: auto; /* A MÁGICA: Isso empurra o rodapé lá para o fundo da tela! */
+}
+
+.rodape-biblioteca a {
+    color: #b30000; 
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.rodape-biblioteca a:hover {
+    color: #800000; 
+    text-decoration: underline;
 }

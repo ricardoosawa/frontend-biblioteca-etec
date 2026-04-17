@@ -8,22 +8,31 @@
 </head>
 <body class="fundo-painel">
 
-    <!-- Note que usamos uma classe nova (container-painel) para deixá-lo mais largo -->
     <main class="container-painel">
         <header class="cabecalho-painel">
             <div>
                 <h1>Gestão de Agendamentos</h1>
                 <p>Biblioteca - Etec prof. Luiz Pires Barbosa</p>
             </div>
-            <a href="index.html" class="btn-sair">Sair do Painel</a>
-        </header>
+            
+            <div class="controles-topo">
+                <button id="btn-perfil" class="btn-secundario" onclick="window.location.href='perfil.html'">
+                    👤 Meu Perfil
+                </button>
+                <button id="btn-sair" class="btn-sair" onclick="logout()">
+                    Sair do Painel
+                </button>
+            </div>
+            </header>
 
         <section class="tabela-responsiva">
             <table>
                 <thead>
                     <tr>
                         <th>RM</th>
-                        <th>Nome</th> <th>E-mail</th>
+                        <th>Nome</th> 
+                        <th>Curso</th>
+                        <th>E-mail</th>
                         <th>Serviço</th>
                         <th>Data</th>
                         <th>Horário</th>
@@ -32,7 +41,6 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- Exemplo de Aluno 1 (Fictício para teste visual) -->
                     <tr>
                         <td>12345</td>
                         <td>Joao Silva</td><td>joao@etec.sp.gov.br</td>
@@ -46,7 +54,6 @@
                         </td>
                     </tr>
                     
-                    <!-- Exemplo de Aluno 2 (Fictício para teste visual) -->
                     <tr>
                         <td>54321</td>
                         <td>Maria Oliveira</td><td>maria@etec.sp.gov.br</td>

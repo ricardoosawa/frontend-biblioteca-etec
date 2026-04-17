@@ -45,6 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function desenharTabela(agendamentos) {
+        
         corpoTabela.innerHTML = ''; // Limpa a tabela
 
         if (agendamentos.length === 0) {
@@ -67,19 +68,54 @@ document.addEventListener('DOMContentLoaded', () => {
             linha.innerHTML = `
                 <td>${agendamento.rm || 'N/A'}</td>
                 <td>${agendamento.nome}</td>
-                <td>${agendamento.email}</td>
+                <td>${agendamento.curso || 'Não informado'}</td> <td>${agendamento.email}</td>
                 <td>${textoExibicao}</td> 
                 <td>${agendamento.data}</td>
                 <td>${agendamento.horario}</td>
-                <td><span class="status-pendente">Pendente</span></td>
+                <td><span class="status-${agendamento.status.toLowerCase()}">${agendamento.status}</span></td>
                 <td class="acoes">
-                    <button class="btn-aprovar" title="Aprovar">✓</button>
-                    <button class="btn-recusar" title="Recusar">✕</button>
+                    <button class="btn-aprovar" title="Aprovar" onclick="alterarStatus(${agendamento.id}, 'APROVADO')">✓</button>
+                    <button class="btn-recusar" title="Recusar" onclick="alterarStatus(${agendamento.id}, 'RECUSADO')">✕</button>
                 </td>
             `;
             corpoTabela.appendChild(linha);
         });
     }
+    // A função que conversa com a rota PATCH do servidor
+    window.alterarStatus = async function(id, novoStatus) {
+        // Pede uma confirmação para você não clicar sem querer
+        const confirmacao = confirm(`Tem certeza que deseja marcar este agendamento como ${novoStatus}?`);
+        if (!confirmacao) return;
+
+        try {
+            const resposta = await fetch(`http://localhost:3000/api/v1/agendamentos/${id}`, {
+                method: 'PATCH', // Método usado para atualizar apenas um pedaço do dado
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}` // Mostra o crachá de admin!
+                },
+                body: JSON.stringify({ status: novoStatus }) // Manda o status novo
+            });
+
+            if (resposta.ok) {
+                // Se o servidor aceitou, recarregamos a tabela para mostrar a cor nova!
+                carregarAgendamentos();
+            } else {
+                // O nosso clássico X9 para pegar qualquer erro
+                const motivo = await resposta.text();
+                alert(`Erro ao alterar o status! Servidor disse: ` + motivo);
+            }
+        } catch (erro) {
+            console.error('Erro de conexão:', erro);
+            alert('Não foi possível conectar ao servidor.');
+        }
+    };
 
     carregarAgendamentos();
 });
+window.logout = function() {
+    if (confirm("Deseja realmente sair do sistema?")) {
+        localStorage.removeItem('token'); // Apaga o token
+        window.location.href = 'login.html'; // Volta para o login
+    }
+};
