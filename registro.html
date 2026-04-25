@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Primeiro Acesso - Biblioteca</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .caixa-registro {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            max-width: 400px;
+            margin: 50px auto;
+            text-align: center;
+        }
+        .grupo-input { margin-bottom: 15px; text-align: left; }
+        .grupo-input label { display: block; margin-bottom: 5px; font-weight: bold; }
+        .grupo-input input { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+        .btn-registrar { background-color: #b30000; color: white; border: none; padding: 12px; width: 100%; border-radius: 4px; cursor: pointer; font-weight: bold; }
+        .btn-registrar:hover { background-color: #800000; }
+        #mensagemErro { color: red; margin-bottom: 15px; display: none; }
+    </style>
+</head>
+<body class="fundo-painel">
+
+    <main class="caixa-registro" id="areaRegistro" style="display: none;">
+        <h2 style="color: #b30000;">Configuração Inicial</h2>
+        <p style="font-size: 14px; color: #666; margin-bottom: 20px;">
+            Crie a conta do bibliotecário administrador. <b>Isso só pode ser feito uma vez.</b>
+        </p>
+
+        <p id="mensagemErro"></p>
+
+        <form id="formRegistro">
+            <div class="grupo-input">
+                <label for="nome">Nome Completo</label>
+                <input type="text" id="nome" required>
+            </div>
+            
+            <div class="grupo-input">
+                <label for="email">E-mail Institucional</label>
+                <input type="email" id="email" required>
+            </div>
+            
+            <div class="grupo-input">
+                <label for="senha">Senha</label>
+                <input type="password" id="senha" required>
+            </div>
+            
+            <div class="grupo-input">
+                <label for="confirmarSenha">Confirmar Senha</label>
+                <input type="password" id="confirmarSenha" required>
+            </div>
+
+            <button type="submit" class="btn-registrar">Criar Administrador</button>
+        </form>
+    </main>
+
+    <script src="registro.js"></script>
+</body>
+</html>
