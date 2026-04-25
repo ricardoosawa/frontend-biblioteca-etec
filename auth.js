@@ -1,9 +1,41 @@
 document.addEventListener('DOMContentLoaded', async () => {
+
+    // === TRAVA DE SEGURANÇA: PREVENÇÃO DE LOOP E TOKEN ZUMBI ===
+    const tokenGuardado = localStorage.getItem('token');
+    
+    // Só faz a verificação se o usuário estiver na tela de login ou registro
+    if (tokenGuardado && (window.location.pathname.includes('login.html') || window.location.pathname.includes('registro.html'))) {
+        try {
+            // Vai no Back-end e pergunta: "Esse crachá ainda é válido?"
+            const resposta = await fetch('http://localhost:3000/api/v1/auth/me', {
+                method: 'GET',
+                headers: {
+                    'Authorization': `Bearer ${tokenGuardado}`
+                }
+            });
+
+            if (resposta.ok) {
+                // O servidor confirmou que o token é válido! Pula a catraca direto pro painel.
+                window.location.href = 'painel.html';
+                return; // O 'return' faz o script parar de ler o resto da página de login
+            } else {
+                // O servidor avisou que o token expirou ou é falso.
+                // Limpamos o localStorage para evitar o loop infinito!
+                console.warn("Token inválido ou expirado. Apagando...");
+                localStorage.removeItem('token');
+            }
+        } catch (erro) {
+            // Se o Back-end estiver offline, apagamos o token por segurança e deixamos a pessoa no login.
+            console.error("Erro ao validar sessão:", erro);
+            localStorage.removeItem('token');
+        }
+    }
+    // =============================================================
+
     const loadingStatus = document.getElementById('loadingStatus');
     const formLogin = document.getElementById('formLogin');
     const formRegistro = document.getElementById('formRegistro');
 
-    
     // 1. Verifica o status do sistema (Se já tem admin cadastrado)
     try {
         const respostaStatus = await fetch('http://localhost:3000/api/v1/auth/status');
@@ -100,4 +132,4 @@ document.addEventListener('DOMContentLoaded', async () => {
             }
         });
     }
-}); 
+});

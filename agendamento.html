@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes do Agendamento</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f4f4f9; padding: 20px; }
+        .ficha-container { max-width: 600px; margin: 0 auto; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .linha-dado { margin-bottom: 15px; font-size: 16px; border-bottom: 1px solid #eee; padding-bottom: 10px; }
+        .titulo-dado { font-weight: bold; color: #555; display: inline-block; width: 120px; }
+        .btn-voltar { display: inline-block; margin-bottom: 20px; padding: 10px 15px; background-color: #333; color: white; text-decoration: none; border-radius: 5px; }
+        .btn-voltar:hover { background-color: #555; }
+    </style>
+</head>
+<body>
+    <div class="ficha-container">
+        <a href="painel.html" class="btn-voltar">← Voltar para o Painel</a>
+        <h2>Ficha do Agendamento</h2>
+        
+        <div id="areaDados">
+            <p class="linha-dado"><span class="titulo-dado">Nome:</span> <span id="detalheNome">Carregando...</span></p>
+            <p class="linha-dado"><span class="titulo-dado">RM:</span> <span id="detalheRM">Carregando...</span></p>
+            <p class="linha-dado"><span class="titulo-dado">Curso:</span> <span id="detalheCurso">Carregando...</span></p>
+            <p class="linha-dado"><span class="titulo-dado">E-mail:</span> <span id="detalheEmail">Carregando...</span></p>
+            <p class="linha-dado"><span class="titulo-dado">Data:</span> <span id="detalheData">Carregando...</span></p>
+            <p class="linha-dado"><span class="titulo-dado">Horário:</span> <span id="detalheHorario">Carregando...</span></p>
+            <p class="linha-dado"><span class="titulo-dado">Serviços:</span> <span id="detalheServicos">Carregando...</span></p>
+            <p class="linha-dado"><span class="titulo-dado">Status Atual:</span> <strong id="detalheStatus">Carregando...</strong></p>
+        </div>
+    </div>
+    <script src="agendamento.js"></script>
+</body>
+</html>
